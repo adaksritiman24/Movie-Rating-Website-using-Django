@@ -1,0 +1,159 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#btdf{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+#btdf:hover{
+    color: rgb(69, 103, 165);
+}
+#btdw{
+    color: orange;
+    text-decoration: none;
+}
+#btdw:hover{
+    color: rgb(196, 128, 3);
+}
+.dashstyle{
+    background-color: rgb(45, 3, 56);
+}
+.success{
+    color: green;
+}
+.error{
+    color: red;
+}
+.m-info{
+    color: rgb(240, 241, 238);
+    padding: 0px;
+    margin: 0px;
+}
+.card-style{
+    background-color: rgb(24, 1, 31);
+    padding: 5px;
+}
+.card-style:hover{
+    transition: 0.5s;
+    box-shadow: 2px 4px 3px 7px rgb(3, 3, 3);
+}
+.btn-style{
+    padding: 7px;
+}
+.white-fg{
+    color: white;
+}
+.yellow-fg{
+    color: yellow;
+}
+.sky-fg{
+    color: rgb(194, 228, 241);
+}
+.pink-fg{
+    color: pink;
+}
+.green-fg{
+    color: rgb(82, 223, 16);
+}
+.bd{
+    border: 2px solid white;
+}
+.plot{
+    font-size: 2.3vh;
+}
+.hide{
+    display: none;
+}
+.star-style{
+    width: 20px;
+    height: 20px;
+    color: gold;
+}
+#ratingselect{
+    color: gold;
+    font-size: 1em;
+    background-color: rgb(28, 2, 48);
+}
+.input-group-text{
+    font-family: cursive;
+    color: white;
+    background-color: black;
+}
+#btd{
+    text-decoration: none;
+    font-weight: bold;
+    color: chartreuse;
+}
+#btd:hover{
+    color: rgb(82, 158, 5);
+}
+.title-style{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.form-label {
+    color: rgb(210, 221, 210);
+    font-style: italic;
+    margin-top: 12px;
+}
+.login-style{
+    border: 2px solid gainsboro;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 50px;
+}
+.sign-style{
+    background-color: rgba(201, 201, 233, 0.1);
+    padding: 1em 2em;
+    border-radius: 15px;
+}
+.drop-style{
+    color: rgb(102, 250, 17);
+    border: none;
+    font-size: 1.5em;
+    background-color: transparent;
+}
+
+.dropdown-menu li a{
+    color: whitesmoke;
+}
+.dropdown ul{
+    border-radius: 16px;
+}
+.dropdown ul li{
+    margin: 5px 10px;
+}
+
+#topper{
+    padding: 5px 50px;
+    background-color: rgb(2, 59, 59);
+}
+#topper div h2{
+    margin-bottom: 0px;
+    font-weight: normal;
+    color: khaki;
+}
+
+.listing{
+    background-color: rgb(0, 7, 7);
+    border: 2px solid rgb(80, 79, 79);
+    height: 100%;
+    top: 0px;
+}
+
+.browse{
+    font-size: 20px;
+    margin-top: 5px;
+    font-family: monospace;
+}
+#genre-drop-style{
+    background-color: rgb(2, 53, 53);
+}
+
+.brand-style{
+    color: rgb(36, 102, 243);
+    font-family: 'Monoton', cursive;
+    /* font-weight: bold; */
+}

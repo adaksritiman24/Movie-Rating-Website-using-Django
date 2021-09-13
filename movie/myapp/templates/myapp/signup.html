@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+{%block content %}
+<div class="container white-fg mt-5 mb-5">
+    <div class="row">
+        <div class="col-sm-4 offset-4 sign-style">
+            <h3 class=" green-fg text-center">SIGN UP</h3>
+            <hr>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for f in form %}
+                  <label for="" class="form-label">{{f.label_tag}} </label>{{f}}
+                  <div class  = "error">
+                    {{f.errors|striptags}}
+                    </div>
+                {% endfor %}
+                <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                    <input type="submit" value="Sign Up" class = 'btn btn-success'>
+                  </div>
+            </form>
+            {% for m in messages %}
+            
+            <div class  = "{{m.tags}}">
+                {{m}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<footer id="footer">
+    <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact Us</span></p>
+    <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
+  </footer>
+{% endblock%}
+
+

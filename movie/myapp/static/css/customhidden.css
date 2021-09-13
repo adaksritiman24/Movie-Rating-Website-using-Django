@@ -1,0 +1,103 @@
+.hide{
+    display: none;
+}
+.holder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .holder-pro{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:left;
+  }
+  .thumb {
+    margin: 20px;
+    border-radius: 16px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 520px;
+    width: 350px;
+    
+  }
+  .genretype{
+    display: table-cell;
+    font-size: 3rem;
+    border-radius: 16px;
+    font-weight: bold;
+    font-family:  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    height: 520px;
+    width: 350px;
+  }
+  .genretype:hover{
+    color: yellow;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .movie-info{
+    display: table-cell;
+    height: 520px;
+    width: 350px;
+    border-radius: 16px;
+    background-color: rgba(0,0,0,0.5);
+    padding-bottom: 0px;
+  }
+  .movie-info div{
+    background-color: rgba(10, 5, 5, 0.6);
+    color: white;
+    border-radius: 16px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: 208px;
+    margin-bottom: 0px;
+    box-shadow: 0px -5px 5px 0px rgba(10, 5, 5, 0.6);
+  }
+  .movie-info div h2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 5px;
+  }
+
+  .c-style{
+    border-radius: 20px;
+    background-color: rgba(3, 1, 1, 0.6);
+    width: 70vw;
+  }
+  .c-style h2{
+    font-weight: bold;
+    font-size: 2.5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .c-style p{
+    font-size: 1em;
+    color: rgb(202, 215, 238);
+  }
+  #joinus p {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #footer{
+    color: rgb(57, 168, 241);
+    background-color: rgb(15, 4, 15);
+  }
+  #footer p{
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+  }
+  #footer p label{
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0px 30px;
+    text-decoration: underline;
+  }
+  #footer p span{
+    margin: 0px 30px;
+    text-decoration: underline;
+  }

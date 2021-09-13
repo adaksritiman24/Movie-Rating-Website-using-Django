@@ -1,0 +1,30 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="row white-fg mb-5">
+    <div class="col-sm-4 offset-4 login-style">
+        <h2 class = "text-center">LOGIN</h2>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for f in form %}
+            <div class="form-group">
+                <label class = " form-label">{{f.label_tag}}</label>{{f}}
+            </div>  
+            {% endfor %}
+            <div class="d-grid gap-2">
+            <input type="submit" value="Login" class= "btn btn-primary mt-4">
+            </div>
+        </form>
+        <div class="d-grid gap-2">
+            <label class = "mt-2">Not Registered?</label>
+            <a href="{% url 'signup' %}" class = "btn btn-success">Sign Up</a>
+        </div>
+        {% for m in messages %}
+        <div class  = "{{m.tags}} text-center">
+            {{m}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,86 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+
+<!-- carousal -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="static/imgs/c-3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block c-style">
+                <h2>Explore Top Rated Movies from across the World</h2>
+                <p>With a collection of more that 1000 movies rated by our viewers, <br>
+                    get and opportunity to dicover movies of various Genres and Languages
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="static/imgs/c-2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block c-style">
+                <h2>Search and Rate Movies</h2>
+                <p>Search movies by title, Language, or genre. Rate your faavourite
+                    movies out of 10
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="static/imgs/c-1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block c-style">
+                <h2>Add Movies to your Favourites and WatchList</h2>
+                <p>
+                    You can also add movies to your Watchlist,<br> and add your favourites movies to your Favourites
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container-fluid">
+
+    <div id="joinus" style="color: rgb(175, 223, 43);">
+        <p class = "text-center">Signup with Movie Manifest to enjoy exciting content</p>
+        <p><a class="btn btn-success btn-lg" href="{% url 'signup' %}">Sign Up</a></p>
+    </div>
+    <hr style="color: whitesmoke;">
+    <div class="holder mb-4" id = "g-marks">
+        <a href="{% url 'dash' %}" class=" thumb" style="background-image: url('static/imgs/avg.jpg');">
+            <div class="genretype">Action</div>
+        </a>
+        <a href="{% url 'dash' %}" class=" thumb" style="background-image: url('static/imgs/ir.jpg');">
+            <div class="genretype">Thriller</div>
+        </a>
+        <a href="{% url 'dash' %}" class=" thumb" style="background-image: url('static/imgs/it.jpg');">
+            <div class="genretype">Horror</div>
+        </a>
+        <a href="{% url 'dash' %}" class=" thumb" style="background-image: url('static/imgs/its.jpg');">
+            <div class="genretype">Sci-Fi</div>
+        </a>
+        <a href="{% url 'dash' %}" class=" thumb" style="background-image: url('static/imgs/hp.jpg');">
+            <div class="genretype">Comedy</div>
+        </a>
+        <a href="{% url 'dash' %}" class=" thumb" style="background-image: url('static/imgs/lotr.jpg');">
+            <div class="genretype">Fantasy</div>
+        </a>
+    </div>
+</div>
+
+<footer id="footer">
+    <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact Us</span></p>
+    <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
+  </footer>
+{% endblock%}

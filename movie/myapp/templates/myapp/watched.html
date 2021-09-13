@@ -1,0 +1,37 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="container white-fg">
+        <h1 class="mt-2">WatchList</h1>
+        <hr>
+    </div>
+    
+    <div class="holder-pro container">
+        {% for movie in watchlist %}
+        <div class=" thumb" style="background-image: url('/media/{{movie.poster}}');">
+            <div class="movie-info">
+                <div>
+                    <h2 class = "text-center">{{movie.title}}</h2>
+                    <hr>
+                    <p style="display:flex; justify-content: center;" class="white-fg">
+                        <i class="bi bi-star-fill" style="color: gold; margin-right:5px;"></i>
+                        {% if movie.rating %}
+                        <b> {{movie.rating}}/10</b>
+                        {% else %}
+                        <b> No ratings</b>
+                        {% endif %}
+                      </p>
+                      <p style="margin: 10px;" class="pink-fg">{{movie.lang}}</p>
+                      <p style="margin: 10px;" class= "sky-fg">{{movie.genre}}</p>
+                      <p style="margin: 10px;">{{movie.plot}}</p>
+                      <p class="container d-flex" style="justify-content: center; margin-bottom:0px;">
+                        <a href="{% url 'moviepage' movie.id userid %}" class = "btn btn-outline-success btn-sm mb-3">See more</a>
+                      </p>
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}

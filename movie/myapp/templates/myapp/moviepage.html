@@ -1,0 +1,116 @@
+{% extends 'myapp/base.html' %}
+{%block content %}
+<div class="container mt-5 mb-5">
+    <div id="movie-hidden" class="hide">{{movie.id}}</div>
+    <div id="viewer-hidden" class="hide">{{user.id}}</div>
+    <div class="row white-fg ">
+        <div class="col-md-6">
+            <div class="d-flex" style="justify-content: center;">
+                <div class="thumbnail">
+                    <img src="{{movie.poster.url}}" alt="" class='img img-responsive' height="400vh" width="300vw">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label
+                style=" margin:0px; padding: 0px; font-size: 5vh; font-family: 'Berkshire Swash', cursive;">{{movie.title}}</label>
+            <label style="margin-left: 20px;">{{movie.genre}}</label>
+            <hr>
+            <p>
+                <i class="bi bi-star-fill" style="line-height: 0.5; font-size: 2rem; color: gold"></i>
+                {% if movie.rating %}
+                <b style="font-size: 1.4em;"> {{movie.rating}}/10</b>
+                {% else %}
+                <b> No ratings</b>
+                {% endif %}
+                <i class="bi bi-people-fill" style="margin-left:30px; line-height: 0.5; font-size: 2rem; color: gold"></i>
+                <b style="font-size: 1.4em;">{{no_of_ratings}}</b>
+            </p>
+            <p class="yellow-fg">{{movie.year}}</p>
+            <p class="sky-fg">{{movie.lang}}</p>
+            <h4 style="font-family: 'Arial Narrow Bold', sans-serif;">Plot:</h4>
+            <div>
+                <p class='plot'>{{movie.plot}}</p>
+            </div>
+            {% if vm.watched == 1%}
+            <button class="btn btn-warning" id='watchbtn'>Remove from WatchList</button>
+            {% else %}
+            <button class="btn btn-warning" id='watchbtn'>Add to WatchList</button>
+            {% endif %}
+
+            {% if vm.favourite == 1 %}
+            <button class="btn btn-primary" id='favbtn'>Remove from Favourites</button>
+            {% else %}
+            <button class="btn btn-primary" id='favbtn'>Add to Favourites</button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 offset-1">
+            <hr style="color: palegreen;">
+        </div>
+    </div>
+    <h3 class="text-center white-fg">Rate this movie:</h3>
+    <div class="row white-fg d-flex" style="justify-content: center;">
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="ratingselect">Rate</label>
+                <select class="form-select" id="ratingselect">
+                    <option selected value="N">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button class = "btn btn-info" id = "submitrating">Submit Rating</button>
+        
+        </div>
+        {% if vm.rating %}
+        <div class="col-md-2" id = 'rm-rt'>
+            <button class = "btn btn-danger" id = "removerating">Remove Rating</button>
+          
+        </div>
+        {% else %}  
+        <div class="col-md-2 hide" id = 'rm-rt-temp'>
+            <button class = "btn btn-danger" id = "removerating">Remove Rating</button>
+          
+        </div>
+        {% endif %}
+        <div>
+            {% if vm.rating %}
+            <p class='text-center' id = "you-rated">You rated : {{vm.rating}}</p>
+            {% else %}
+            <p class='text-center' id = "you-rated"></p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 offset-1">
+            <hr style="color: palegreen;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 offset-1">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{% url 'favourites' user.id %}" id = "btdf">GO TO FAVOURITES</a>
+                <a href="{% url 'watched' user.id %}" id = "btdw">GO TO WATCHLIST</a>
+                <a href="{% url 'dash' %}" id = "btd">BACK TO DASHBOARD</a>
+            </div>  
+        </div>
+    </div>
+    
+</div>
+<footer id="footer">
+    <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact Us</span></p>
+    <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
+  </footer>
+{% endblock%}

@@ -1,0 +1,108 @@
+{% extends 'myapp/base.html' %}
+{%block content %}
+
+
+<div class="white-fg">
+  <!-- {% for m in messages %}
+  <div class="{{m.tags}}">
+    {{m}}
+  </div>
+  {% endfor %} -->
+  <div class="row" id = "topper">
+    <div class="col-md-4">
+      <h2 style = "font-family: 'Lobster', cursive;">Welcome {{user.first_name}}</h2>
+    </div>
+    <div class="col-md-2 browse text-center">
+      Browse by Category
+    </div>
+    
+    <div class="col-md-2 listing">
+      <!-- genre -->
+      <div class="dropdown" style="display: flex; justify-content:center;">
+        <button class=" dropdown-toggle drop-style" type="button" id="genreselect" data-bs-toggle="dropdown" aria-expanded="false">
+          Genre
+        </button>
+        <ul class="dropdown-menu" style="background-color: rgb(63, 28, 87);" id="genre-drop-style" aria-labelledby="genreselect">
+          <li><a class="dropdown-item" onclick="movie_search('')">All</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('action')">Action</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('sci-fi')">Sci-Fi</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('horror')">Horror</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('thriller')">Thriller</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('romance')">Romance</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('crime')">Crime</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('adventure')">Adventure</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('war')">War</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('drama')">Drama</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('fantasy')">Fantasy</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('comedy')">Comedy</a></li>
+          <li><a class="dropdown-item" onclick="movie_search('musical')">Musical</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2 listing"> 
+      <!-- language -->
+      <div class="dropdown" style="display: flex; justify-content:center;">
+        <button class=" dropdown-toggle drop-style" type="button" id="language" data-bs-toggle="dropdown" aria-expanded="false">
+          Language
+        </button>
+        <ul class="dropdown-menu" style="background-color: rgb(63, 28, 87);" aria-labelledby="language">
+          <li><a class="dropdown-item" onclick="movie_search_by_lang('')">All</a></li>
+          <li><a class="dropdown-item" onclick="movie_search_by_lang('bengali')">Bengali</a></li>
+          <li><a class="dropdown-item" onclick="movie_search_by_lang('english')">English</a></li>
+          <li><a class="dropdown-item" onclick="movie_search_by_lang('hindi')">Hindi</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2 listing"> 
+      <!-- year -->
+      <div class="dropdown" style="display: flex; justify-content:center;">
+        <button class=" dropdown-toggle drop-style" type="button" id="movyear" data-bs-toggle="dropdown" aria-expanded="false">
+          Year
+        </button>
+        <ul class="dropdown-menu" style="background-color: rgb(63, 28, 87);" aria-labelledby="movyear">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  
+
+  <div class="container-fluid">
+    <div class="row mb-4 mt-2">
+      {% for movie in allmovies %}
+      <div class="col-xl-2 col-lg-3  col-md-4 col-sm-6 movie-selector">
+        <div class="card card-style mt-2 mb-2">
+          <img src="{{ movie.poster.url }}" class="card-img-top" height='300em' alt="NF">
+          <div class="card-body">
+            <h5 class=" m-info card-title text-center mb-1 pink-fg title-style">{{movie.title}}</h5>
+            <p style="display:flex; justify-content: center;" class="white-fg">
+              <i class="bi bi-star-fill" style="color: gold; margin-right:5px;"></i>
+              {% if movie.rating %}
+              <b> {{movie.rating}}/10</b>
+              {% else %}
+              <b> No ratings</b>
+              {% endif %}
+            </p>
+            <p class="m-info">{{movie.year}}</p>
+            <p class="m-info yellow-fg genre-info">{{movie.genre}}</p>
+            <p class="m-info green-fg lang-info">{{movie.lang}}</p>
+          </div>
+          <div class="d-grid gap-2 btn-style">
+            <a href="{% url 'moviepage' movie.id user.id %}" class="btn btn-outline-info btn-sm">View More</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<footer id="footer">
+  <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact Us</span></p>
+  <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
+</footer>
+{% endblock%}
