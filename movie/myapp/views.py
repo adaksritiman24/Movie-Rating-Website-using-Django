@@ -1,3 +1,5 @@
+from typing import final
+from django.conf import settings
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
@@ -10,6 +12,8 @@ from django.http import JsonResponse
 from django.db.models import Avg
 from django.views.decorators.csrf import csrf_exempt
 from django.db import connection
+import datetime
+
 # Create your views here.
 
 def home(request):
@@ -71,16 +75,25 @@ def moviepage(request,movieid,viewerid):
         except:
             vm = {
                 'watched' : None,
-                'favouurite': None,
+                'favourite': None,
                 'rating':None,
             }    
         movie = Movie.objects.get(pk = movieid)
         no_of_ratings = ViewerMovie.objects.filter(movie_id = movieid, rating__isnull = False).count()
+        revs = ViewerMovie.objects.select_related('viewer').filter(movie_id = movieid, review__isnull=False).order_by('-rtime')
+        top3_reviews = []
+        count = 0
+        for re in revs:
+            count+=1
+            top3_reviews.append({'reviewer':re.viewer.username,'review': re.review,'time':re.rtime})
+            if count==3:
+                break 
         context = {
             'user': request.user,
             'movie':movie,
             'vm': vm,
             'no_of_ratings': no_of_ratings,
+            'reviews': top3_reviews,
         }
         return render(request, 'myapp/moviepage.html', context)
     else:
@@ -191,3 +204,23 @@ def removeRating(request, movieid, viewerid):
         return JsonResponse({'success':'Rating Removed'})
     else:
        return redirect('/login/')    
+@csrf_exempt
+def postReview(request, movieid, viewerid):
+    if request.user.is_authenticated:
+        review = request.POST['review']
+        timenow = datetime.datetime.now()
+        nor = ViewerMovie.objects.filter(movie = movieid, viewer = viewerid).update(review=review, rtime = timenow )
+        if nor == 0:
+            vm =ViewerMovie(movie_id = movieid, viewer_id = viewerid,review=review, rtime = timenow)
+            vm.save()  
+        return JsonResponse({'time':timenow.strftime('%b. %d, %Y, %I:%M %p'.lstrip('0'))})   
+    else:
+        return redirect('/login/')    
+
+def deleteReview(request, movieid, viewerid):
+    if request.user.is_authenticated:
+        nor = ViewerMovie.objects.filter(movie = movieid, viewer = viewerid).update(review=None, rtime = None)
+
+        return JsonResponse({'Success':'Review Deleted'})    
+    else:    
+        return redirect('/login/')    

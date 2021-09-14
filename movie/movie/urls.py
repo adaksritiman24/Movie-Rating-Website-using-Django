@@ -39,4 +39,7 @@ urlpatterns = [
 
     path('moviepage/<int:movieid>/<int:viewerid>/submitrating/',views.submitrating_fn, name = 'submitrating'),
     path('moviepage/<int:movieid>/<int:viewerid>/removerating/',views.removeRating, name = 'removerating'),
+
+    path('moviepage/<int:movieid>/<int:viewerid>/postreview/',views.postReview, name = 'postreview'),
+    path('moviepage/<int:movieid>/<int:viewerid>/deletereview/',views.deleteReview, name = 'deletereview'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

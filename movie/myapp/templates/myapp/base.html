@@ -40,26 +40,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}"><i class="bi bi-house-door m-r"></i>Home</a>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'dash' %}">Dashboard</a>
+            <a class="nav-link" aria-current="page" href="{% url 'dash' %}"><i class="bi bi-film m-r"></i>Dashboard</a>
           </li>
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'watched' user.id %}">My Watchlist</a>
+            <a class="nav-link" aria-current="page" href="{% url 'watched' user.id %}"><i class="bi bi-card-checklist m-r"></i>My Watchlist</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'favourites' user.id %}">My Favourites</a>
+            <a class="nav-link" aria-current="page" href="{% url 'favourites' user.id %}"><i class="bi bi-heart-fill m-r"></i>My Favourites</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-link" aria-current="page" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right m-r"></i>Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" aria-current="page" href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right m-r"></i>Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'signup' %}">Sign up</a>
+            <a class="nav-link" aria-current="page" href="{% url 'signup' %}"><i class="bi bi-person-plus m-r"></i>Sign up</a>
           </li>
           {% endif %}
 

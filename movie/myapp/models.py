@@ -13,6 +13,7 @@ class Movie(models.Model):
     lang = models.CharField(max_length=70)
     poster = models.ImageField(upload_to = "posters/", null = True)
     rating = models.DecimalField(decimal_places = 2, null = True, blank = True, max_digits=6)
+    
 
 class ViewerMovie(models.Model):
     viewer = models.ForeignKey(Viewer, on_delete= models.CASCADE)
@@ -20,3 +21,5 @@ class ViewerMovie(models.Model):
     watched = models.IntegerField(null = True)
     favourite = models.IntegerField(null = True)
     rating = models.IntegerField(null = True)
+    review = models.CharField(max_length=150, null = True)
+    rtime = models.DateTimeField(null = True)

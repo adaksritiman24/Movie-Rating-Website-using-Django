@@ -23,12 +23,16 @@
                 {% else %}
                 <b> No ratings</b>
                 {% endif %}
-                <i class="bi bi-people-fill" style="margin-left:30px; line-height: 0.5; font-size: 2rem; color: gold"></i>
+                <i class="bi bi-people-fill"
+                    style="margin-left:30px; line-height: 0.5; font-size: 2rem; color: gold"></i>
                 <b style="font-size: 1.4em;">{{no_of_ratings}}</b>
             </p>
             <p class="yellow-fg">{{movie.year}}</p>
             <p class="sky-fg">{{movie.lang}}</p>
-            <h4 style="font-family: 'Arial Narrow Bold', sans-serif;">Plot:</h4>
+            <h4 style="font-family: 'Arial Narrow Bold', sans-serif;">
+                <i class="bi bi-filter-right" style="margin-right: 3px;" ></i>
+                Plot:
+            </h4>
             <div>
                 <p class='plot'>{{movie.plot}}</p>
             </div>
@@ -71,25 +75,25 @@
             </div>
         </div>
         <div class="col-md-2">
-            <button class = "btn btn-info" id = "submitrating">Submit Rating</button>
-        
+            <button class="btn btn-info" id="submitrating">Submit Rating</button>
+
         </div>
         {% if vm.rating %}
-        <div class="col-md-2" id = 'rm-rt'>
-            <button class = "btn btn-danger" id = "removerating">Remove Rating</button>
-          
+        <div class="col-md-2" id='rm-rt'>
+            <button class="btn btn-danger" id="removerating">Remove Rating</button>
+
         </div>
-        {% else %}  
-        <div class="col-md-2 hide" id = 'rm-rt-temp'>
-            <button class = "btn btn-danger" id = "removerating">Remove Rating</button>
-          
+        {% else %}
+        <div class="col-md-2 hide" id='rm-rt-temp'>
+            <button class="btn btn-danger" id="removerating">Remove Rating</button>
+
         </div>
         {% endif %}
         <div>
             {% if vm.rating %}
-            <p class='text-center' id = "you-rated">You rated : {{vm.rating}}</p>
+            <p class='text-center' id="you-rated">You rated : {{vm.rating}}</p>
             {% else %}
-            <p class='text-center' id = "you-rated"></p>
+            <p class='text-center' id="you-rated"></p>
             {% endif %}
         </div>
     </div>
@@ -98,19 +102,71 @@
             <hr style="color: palegreen;">
         </div>
     </div>
+    <!-- rewiews -->
+    <div class="row d-flex" style="justify-content: center;">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="reviewbox" class="form-label">Write A Review</label>
+                <textarea class="form-control" id="reviewbox" rows="3"
+                    style="background-color: rgb(33, 7, 58); color:yellow"></textarea>
+            </div>
+            <button id="postreview" class="btn btn-light btn-sm rvbtn">Submit Review</button>
+            <button id="deletereview" class="btn btn-danger btn-sm rvbtn"><i class="bi bi-trash m-r"></i>Delete Review</button>
+
+            {% if vm.review %}
+            <div class="my-review white-fg" id ="my-rev">
+                <h5>You Reviewed</h5>
+                <label>{{vm.rtime}}</label>
+                <hr>
+                <p>{{vm.review}}</p>
+            </div>
+            {% else %}
+            <div class="my-review white-fg hide" id = 'my-rev-temp'>
+                <h5>You Reviewed</h5>
+                <label></label>
+                <hr>
+                <p></p>
+            </div>
+            {% endif %}
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="reviewsec white-fg">
+                <h2>Recent Reviews</h2>
+                <hr class="white-fg">
+                {% for review in reviews %}
+                <div class="submitted-review white-fg">
+                    <h5><i class="bi bi-person" style="margin-right: 6px;"></i>{{review.reviewer}}</h5>
+                    <label><i class="bi bi-clock m-r"></i>{{review.time}}</label>
+                    <hr>
+                    <p>{{review.review}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10 offset-1">
+            <hr style="color: palegreen;">
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-sm-10 offset-1">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="{% url 'favourites' user.id %}" id = "btdf">GO TO FAVOURITES</a>
-                <a href="{% url 'watched' user.id %}" id = "btdw">GO TO WATCHLIST</a>
-                <a href="{% url 'dash' %}" id = "btd">BACK TO DASHBOARD</a>
-            </div>  
+                <a href="{% url 'favourites' user.id %}" id="btdf">GO TO FAVOURITES</a>
+                <a href="{% url 'watched' user.id %}" id="btdw">GO TO WATCHLIST</a>
+                <a href="{% url 'dash' %}" id="btd">BACK TO DASHBOARD</a>
+            </div>
         </div>
     </div>
-    
+
 </div>
 <footer id="footer">
-    <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact Us</span></p>
+    <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact
+            Us</span></p>
     <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
-  </footer>
+</footer>
 {% endblock%}
