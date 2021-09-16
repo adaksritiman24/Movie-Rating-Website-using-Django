@@ -69,7 +69,7 @@ def logoutuser(request):
     return redirect('/')
 
 def moviepage(request,movieid,viewerid):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and viewerid==request.user.id:
         try:
             vm = ViewerMovie.objects.get(viewer = viewerid, movie = movieid)
         except:
@@ -152,7 +152,7 @@ def submitrating_fn(request, movieid, viewerid):
     return JsonResponse({'success':'Rated'})
 
 def watched(request, viewerid):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and viewerid==request.user.id:
         cursor = connection.cursor()
         query = f"select * from myapp_movie where id in (select movie_id from myapp_viewermovie where viewer_id = '{viewerid}' and watched = 1)"
         cursor.execute(query)
@@ -174,7 +174,7 @@ def watched(request, viewerid):
         return redirect('/login/') 
 
 def favourites(request, viewerid):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and viewerid==request.user.id:
         cursor = connection.cursor()
         query = f"select * from myapp_movie where id in (select movie_id from myapp_viewermovie where viewer_id = '{viewerid}' and favourite = 1)"
         cursor.execute(query)
