@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customhidden.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <title>Movie Manifest | Review</title>
+    <style>
+        .rv-nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pageno {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .movie-rv {
+            display: flex;
+            justify-content: center;
+            color: black;
+        }
+
+        .movie-rv label {
+            position: relative;
+            font-weight: bold;
+        }
+
+        .movie-rv img {
+            position: relative;
+            top: 7px;
+            right: 20px;
+        }
+
+        .movie-rv label div {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5em;
+        }
+        .movie-rv label span{
+            color: rgba(26, 25, 25,0.75);
+        }
+        .rv-header{
+            background-color: black;
+            color: blanchedalmond;
+            font-size: 2.1em;
+            padding: 6px;
+            padding-bottom: 2px;
+        }
+        .rv-header span{
+            font-family: 'Monoton', cursive;
+            color: chartreuse;
+
+        }
+    </style>
+</head>
+
+<body style="background-color: rgba(0,0,0,0.5);">
+    <div class = "rv-header">
+        <p class="text-center"><span>Movie Manifest</span> | Reviews</p>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+                <div class="reviewsec white-fg">
+                    <div class='movie-rv'>
+                        <img src="{{movie.poster.url}}" alt="NF" width="60vh" height="90vh">
+                        <label>
+                            <div>{{movie.title}}</div>
+                            <hr>
+                            <span><i class="bi bi-calendar-fill m-r"></i> {{movie.year}}</span>
+                        </label>
+                    </div>
+                    <div style="display: flex; justify-content:space-between">
+                        <b style="font-size: 1.9em; color:rgb(42, 44, 40)">Reviews</b>
+                        {% if movie.rating %}
+                        <b> <i class="bi bi-star-fill m-r" style="line-height: 0.5; font-size: 2rem; color: gold"></i>
+                            {{movie.rating}}/10
+                        </b>
+                        {% else %}
+                        <b> No ratings</b>
+                        {% endif %}
+                    </div>
+                    <hr class="btn-dark">
+                    {% for review in page %}
+                    <div class="submitted-review white-fg">
+                        <h5><i class="bi bi-person" style="margin-right: 6px;"></i>{{review.viewer.username}}</h5>
+                        <label><i class="bi bi-clock m-r"></i>{{review.rtime}}</label>
+                        <hr>
+                        <p>{{review.review}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-10 offset-1 rv-nav mb-4">
+                {% if page.has_previous %}
+                <span><a href="?page={{page.previous_page_number}}" class="btn btn-info">Previous</a></span>
+                {% else %}
+                <span><a href="" class="btn btn-info disabled">Previous</a></span>
+                {% endif %}
+                <span><a href="?page=1" class="btn btn-info">First Page</a></span>
+                <span class="pageno">Page: {{page.number}}</span>
+                <span><a href="?page={{last_page}}" class="btn btn-info">Last Page</a></span>
+                {% if page.has_next%}
+                <span><a href="?page={{page.next_page_number}}" class="btn btn-info">Next</a></span>
+                {% else %}
+                <span><a href="" class="btn btn-info disabled">Next</a></span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

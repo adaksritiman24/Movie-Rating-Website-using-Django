@@ -6,9 +6,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from .forms import ViewerCreationForm, LoginForm
 from django.views import View
+from django.core.paginator import Paginator
 from .models import Viewer, Movie, ViewerMovie
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import JsonResponse
+from django.http import JsonResponse, request
 from django.db.models import Avg
 from django.views.decorators.csrf import csrf_exempt
 from django.db import connection
@@ -97,7 +98,20 @@ def moviepage(request,movieid,viewerid):
         }
         return render(request, 'myapp/moviepage.html', context)
     else:
-        return redirect('/login/')     
+        return redirect('/login/')    
+        
+         
+def movieReviews(request, movieid):
+    if request.user.is_authenticated:
+        revs = ViewerMovie.objects.select_related('viewer').filter(movie_id = movieid, review__isnull=False).order_by('-rtime')
+        paginator = Paginator(revs, 3)
+        page_number = request.GET.get('page')
+        page = paginator.get_page(page_number)
+
+        movie = Movie.objects.get(pk = movieid)
+        return render(request, 'myapp/reviews.html',{'page':page,'movie':movie,'last_page':paginator.num_pages})
+    else:
+        return redirect('/login/')
 
 def addtowatchlist_fn(request, movieid, viewerid):
     print('addtowatchlist called')
