@@ -15,7 +15,7 @@ Technologies used : - Django, HTML, CSS, Javascript, Ajax, Bootstrap
 * Movie Page
 ![4](https://user-images.githubusercontent.com/53531220/133277942-0169b31d-dca4-4c97-af05-83582df53c88.JPG)
 ![5](https://user-images.githubusercontent.com/53531220/133277950-d1288b77-4c9c-4972-b7c0-f6c2ca2777ce.JPG)
-* All Ratings Page
+* All Reviews Page
 ![reviews-scr](https://user-images.githubusercontent.com/53531220/133651893-f18e4719-d6e4-4d43-8c1b-08a91faecaa3.JPG)
 
 * Favourites
