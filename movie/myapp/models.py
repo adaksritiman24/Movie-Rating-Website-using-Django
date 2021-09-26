@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from embed_video.fields import EmbedVideoField
 # Create your models here.
 
 class Viewer(User):
@@ -13,6 +14,7 @@ class Movie(models.Model):
     lang = models.CharField(max_length=70)
     poster = models.ImageField(upload_to = "posters/", null = True)
     rating = models.DecimalField(decimal_places = 2, null = True, blank = True, max_digits=6)
+    trailor = EmbedVideoField(null = True)
     
 
 class ViewerMovie(models.Model):
