@@ -9,7 +9,7 @@
   </div>
   {% endfor %} -->
   <div class="row" id = "topper">
-    <div class="col-md-4">
+    <div class="col col-md-4">
       <h2 style = "font-family: 'Lobster', cursive;">Welcome {{user.first_name}}</h2>
     </div>
     <div class="col-md-2 browse text-center">
@@ -75,7 +75,7 @@
       {% for movie in allmovies %}
       <div class="col-xl-2 col-lg-3  col-md-4 col-sm-6 movie-selector">
         <div class="card card-style mt-2 mb-2">
-          <img src="{{ movie.poster.url }}" class="card-img-top" height='300em' alt="NF">
+          <img src="{{ movie.poster.url }}" class="card-img-top" height='400px' alt="NF">
           <div class="card-body">
             <h5 class=" m-info card-title text-center mb-1 pink-fg title-style">{{movie.title}}</h5>
             <p style="display:flex; justify-content: center;" class="white-fg">
@@ -101,8 +101,8 @@
 
 </div>
 
-<footer id="footer">
+<!-- <footer id="footer">
   <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact Us</span></p>
   <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
-</footer>
+</footer> -->
 {% endblock%}

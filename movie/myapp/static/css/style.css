@@ -103,12 +103,13 @@
     border: 2px solid gainsboro;
     padding: 12px;
     border-radius: 12px;
-    margin-top: 50px;
+    margin: 50px;
 }
 .sign-style{
     background-color: rgba(201, 201, 233, 0.1);
     padding: 1em 2em;
     border-radius: 15px;
+    margin: 10px;
 }
 .drop-style{
     color: rgb(102, 250, 17);
@@ -128,8 +129,9 @@
 }
 
 #topper{
-    padding: 5px 50px;
+    padding: 5px 20px;
     background-color: rgb(2, 59, 59);
+    margin: 0px;
 }
 #topper div h2{
     margin-bottom: 0px;
@@ -159,7 +161,7 @@
     /* font-weight: bold; */
 }
 .reviewsec{
-    margin: 15px 7px;
+    margin: 15px 3px;
     margin-right: 0px;
     padding: 15px;
     background-color: rgba(15, 1, 1, 0.3);

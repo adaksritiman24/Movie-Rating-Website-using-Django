@@ -24,7 +24,6 @@
 
         .pageno {
             font-size: 1.5em;
-            font-weight: bold;
         }
 
         .movie-rv {
@@ -73,10 +72,11 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-md-10 offset-1">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <div class="reviewsec white-fg">
                     <div class='movie-rv'>
-                        <img src="{{movie.poster.url}}" alt="NF" width="60vh" height="90vh">
+                        <img class="ml-2" src="{{movie.poster.url}}" alt="NF" width="60vh" height="90vh">
                         <label>
                             <div>{{movie.title}}</div>
                             <hr>
@@ -104,20 +104,22 @@
                     {% endfor %}
                 </div>
             </div>
-
-            <div class="col-md-10 offset-1 rv-nav mb-4">
+        </div>    
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col col-md-10 rv-nav mb-4">
                 {% if page.has_previous %}
-                <span><a href="?page={{page.previous_page_number}}" class="btn btn-info">Previous</a></span>
+                <span class="m-1"><a href="?page={{page.previous_page_number}}" class="btn btn-info">Previous</a></span>
                 {% else %}
-                <span><a href="" class="btn btn-info disabled">Previous</a></span>
+                <span class="m-1"><a href="" class="btn btn-info disabled">Previous</a></span>
                 {% endif %}
-                <span><a href="?page=1" class="btn btn-info">First Page</a></span>
-                <span class="pageno">Page: {{page.number}}</span>
-                <span><a href="?page={{last_page}}" class="btn btn-info">Last Page</a></span>
+                <span class="m-1"><a href="?page=1" class="btn btn-info">First Page</a></span>
+                <span class="pageno text-center">Page {{page.number}}</span>
+                <span class="m-1"><a href="?page={{last_page}}" class="btn btn-info">Last Page</a></span>
                 {% if page.has_next%}
-                <span><a href="?page={{page.next_page_number}}" class="btn btn-info">Next</a></span>
+                <span class="m-1"><a href="?page={{page.next_page_number}}" class="btn btn-info">Next</a></span>
                 {% else %}
-                <span><a href="" class="btn btn-info disabled">Next</a></span>
+                <span class="m-1"><a href="" class="btn btn-info disabled">Next</a></span>
                 {% endif %}
             </div>
         </div>

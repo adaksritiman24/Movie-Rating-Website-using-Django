@@ -2,10 +2,12 @@
 {% load embed_video_tags %}
 {%block content %}
 <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
     <div id="movie-hidden" class="hide">{{movie.id}}</div>
     <div id="viewer-hidden" class="hide">{{user.id}}</div>
     <div class="row white-fg ">
-        <div class="col-md-5 offset-1">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
             <div class="d-flex" style="justify-content: center;">
                 <div class="thumbnail">
                     <img src="{{movie.poster.url}}" alt="" class='img img-responsive' height="400vh" width="300vw">
@@ -13,9 +15,9 @@
             </div>
         </div>
         <div class="col-md-4">
-            <label
-                style=" margin:0px; padding: 0px; font-size: 5vh; font-family: 'Berkshire Swash', cursive;">{{movie.title}}</label>
-            <label style="margin-left: 20px;">{{movie.genre}}</label>
+            <label class="text-center"
+                style="display: block; margin:0px; padding: 0px; font-size: 5vh; font-family: 'Berkshire Swash', cursive;">{{movie.title}}</label>
+            <p class="text-center">{{movie.genre}}</p>
             <hr>
             <p>
                 <i class="bi bi-star-fill" style="line-height: 0.5; font-size: 2rem; color: gold"></i>
@@ -37,21 +39,24 @@
             <div>
                 <p class='plot'>{{movie.plot}}</p>
             </div>
-            {% if vm.watched == 1%}
-            <button class="btn btn-warning" id='watchbtn'>Remove from WatchList</button>
-            {% else %}
-            <button class="btn btn-warning" id='watchbtn'>Add to WatchList</button>
-            {% endif %}
+            <div class="d-flex justify-content-center">
+                {% if vm.watched == 1%}
+                <button class="btn btn-warning m-1" id='watchbtn'>Remove from WatchList</button>
+                {% else %}
+                <button class="btn btn-warning m-1" id='watchbtn'>Add to WatchList</button>
+                {% endif %}
 
-            {% if vm.favourite == 1 %}
-            <button class="btn btn-primary" id='favbtn'>Remove from Favourites</button>
-            {% else %}
-            <button class="btn btn-primary" id='favbtn'>Add to Favourites</button>
-            {% endif %}
+                {% if vm.favourite == 1 %}
+                <button class="btn btn-primary m-1" id='favbtn'>Remove from Favourites</button>
+                {% else %}
+                <button class="btn btn-primary m-1" id='favbtn'>Add to Favourites</button>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-10 offset-1">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
             <hr style="color: palegreen;">
         </div>
     </div>
@@ -75,17 +80,17 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 d-flex justify-content-center m-2">
             <button class="btn btn-info" id="submitrating">Submit Rating</button>
 
         </div>
         {% if vm.rating %}
-        <div class="col-md-2" id='rm-rt'>
+        <div class="col-md-2 d-flex justify-content-center m-2" id='rm-rt'>
             <button class="btn btn-danger" id="removerating">Remove Rating</button>
 
         </div>
         {% else %}
-        <div class="col-md-2 hide" id='rm-rt-temp'>
+        <div class="col-md-2 hide d-flex justify-content-center m-2" id='rm-rt-temp'>
             <button class="btn btn-danger" id="removerating">Remove Rating</button>
 
         </div>
@@ -99,26 +104,28 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-10 offset-1">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
             <hr style="color: palegreen;">
         </div>
     </div>
     <!-- trailor -->
-    <div class="row">
-        <div class="col-sm-8 offset-2">
+    <div class="row justify-content-center">
+        <div class="col-auto">
             <h3 class="sky-fg">
                 Watch Trailer
             </h3>
         </div>
-        <div class="col-sm-8 offset-2 d-flex justify-content-center">
-            {% video movie.trailor '800x600' %}
+        <div class="col col-auto">
+            {% video movie.trailor '300x200' %}
             
         </div>
         
     </div>
 
     <div class="row">
-        <div class="col-sm-10 offset-1">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
             <hr style="color: palegreen;">
         </div>
     </div>
@@ -169,13 +176,15 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-10 offset-1">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
             <hr style="color: palegreen;">
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-10 offset-1">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{% url 'favourites' user.id %}" id="btdf">GO TO FAVOURITES</a>
                 <a href="{% url 'watched' user.id %}" id="btdw">GO TO WATCHLIST</a>
@@ -183,11 +192,11 @@
             </div>
         </div>
     </div>
-
+    </div>
 </div>
-<footer id="footer">
+<!-- <footer id="footer">
     <p><label>Movie Manifest</label><span>Site Settings</span><span>legal</span><span>Privacy Policy</span><span>Contact
             Us</span></p>
     <p><span>Cookie Settings</span><span>help</span><span>Site Settings</span>Admin</p>
-</footer>
+</footer> -->
 {% endblock%}
